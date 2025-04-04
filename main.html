@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Prosty Czat (Ciemny + Kolorowe Wiadomości)</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    #chatyenmachen {
+      border: 1px solid #333;
+      background-color: #1e1e1e;
+      height: 300px;
+      overflow-y: auto;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      margin-bottom: 15px;
+    }
+
+    .message {
+      margin: 8px 0;
+      padding: 10px 15px;
+      border-radius: 8px;
+      color: #dcdcdc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+
+    .message.green {
+      background-color: #2a2a2a;
+      border-left: 4px solid #4caf50;
+    }
+
+    .message.red {
+      background-color: #2a2a2a;
+      border-left: 4px solid #f44336;
+    }
+
+    #messageInput {
+      width: calc(100% - 100px);
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background-color: #2b2b2b;
+      color: #ffffff;
+      outline: none;
+      margin-right: 10px;
+    }
+
+    #przycisk {
+      padding: 10px 15px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #przycisk:hover {
+      background-color: #45a049;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Prosty Czat</h2>
+
+  <div id="chatyenmachen"></div>
+
+  <div class="input-row">
+    <input type="text" id="messageInput" placeholder="Wpisz wiadomość..." />
+    <button id="przycisk">Wyślij</button>
+  </div>
+
+  <script>
+    var messageCount = 0;
+
+    function sendMessage() {
+      var input = document.getElementById("messageInput");
+      var chatyenmachen = document.getElementById("chatyenmachen");
+      var text = input.value.trim();
+
+      if (text !== "") {
+        var msgDiv = document.createElement("div");
+        msgDiv.className = "message";
+
+
+        if (messageCount % 2 === 0) {
+          msgDiv.classList.add("green");
+        } else {
+          msgDiv.classList.add("red");
+        }
+
+        msgDiv.textContent = text;
+        chat.appendChild(msgDiv);
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+        messageCount++;
+      }
+    }
+
+    var button = document.getElementById("przycisk");
+    button.addEventListener("click", sendMessage);
+
+    var inputField = document.getElementById("messageInput");
+    inputField.addEventListener("keypress", function(event) {
+      if (event.key === "Enter") {
+        sendMessage();
+      }
+    });
+  </script>
+
+</body>
+</html>
