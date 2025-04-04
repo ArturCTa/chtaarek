@@ -18,7 +18,7 @@
       color: #ffffff;
     }
 
-    #chatyenmachen {
+    #CZATSigam {
       border: 1px solid #333;
       background-color: #1e1e1e;
       height: 300px;
@@ -29,7 +29,7 @@
       margin-bottom: 15px;
     }
 
-    .message {
+    .WIADOMOSC {
       margin: 8px 0;
       padding: 10px 15px;
       border-radius: 8px;
@@ -37,17 +37,17 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     }
 
-    .message.green {
+    .WIADOMOSC.green {
       background-color: #2a2a2a;
       border-left: 4px solid #4caf50;
     }
 
-    .message.red {
+    .WIADOMOSC.red {
       background-color: #2a2a2a;
       border-left: 4px solid #f44336;
     }
 
-    #messageInput {
+    #wpiszwiadomosci {
       width: calc(100% - 100px);
       padding: 10px;
       border: none;
@@ -58,7 +58,7 @@
       margin-right: 10px;
     }
 
-    #przycisk {
+    #wysylajacyprzyciska {
       padding: 10px 15px;
       background-color: #4caf50;
       color: white;
@@ -68,11 +68,11 @@
       transition: background-color 0.3s ease;
     }
 
-    #przycisk:hover {
+    #wysylajacyprzyciska:hover {
       background-color: #45a049;
     }
 
-    .input-row {
+    .wpisywanie {
       display: flex;
       align-items: center;
     }
@@ -80,52 +80,50 @@
 </head>
 <body>
 
-  <h2>Czatenmachen</h2>
+  <h2>CzatenmACHEN</h2>
 
-  <div id="chatyenmachen"></div>
+  <div id="CZATSigam"></div>
 
-  <div class="input-row">
-    <input type="text" id="messageInput" placeholder="Wpisz wiadomość..." />
-    <button id="przycisk">Wyślij</button>
+  <div class="wpisywanie">
+    <input type="text" id="wpiszwiadomosci" placeholder="Wpisz wiadomość..." />
+    <button id="wysylajacyprzyciska">Wyślij</button>
   </div>
 
   <script>
-    var messageCount = 0;
+    var zliczaniewiddomosci = 0;
 
-    function sendMessage() {
-      var input = document.getElementById("messageInput");
-      var chatyenmachen = document.getElementById("chatyenmachen");
+    function wiadomoscii() {
+      var input = document.getElementById("wpiszwiadomosci");
+      var CZATSigam = document.getElementById("CZATSigam");
       var text = input.value.trim();
 
       if (text !== "") {
-        var msgDiv = document.createElement("div");
-        msgDiv.className = "message";
+        var divenmaCHEN = document.createElement("div");
+        divenmaCHEN.className = "WIADOMOSC";
 
-
-        if (messageCount % 2 === 0) {
-          msgDiv.classList.add("green");
+        if (zliczaniewiddomosci % 2 === 0) {
+          divenmaCHEN.classList.add("green");
         } else {
-          msgDiv.classList.add("red");
+          divenmaCHEN.classList.add("red");
         }
 
-        msgDiv.textContent = text;
-        chat.appendChild(msgDiv);
+        divenmaCHEN.textContent = text;
+        CZATSigam.appendChild(divenmaCHEN);
         input.value = "";
-        chat.scrollTop = chat.scrollHeight;
-        messageCount++;
+        CZATSigam.scrollTop = CZATSigam.scrollHeight;
+        zliczaniewiddomosci++;
       }
     }
 
-    var button = document.getElementById("przycisk");
-    button.addEventListener("click", sendMessage);
+    var button = document.getElementById("wysylajacyprzyciska");
+    button.addEventListener("click", wiadomoscii);
 
-    var inputField = document.getElementById("messageInput");
+    var inputField = document.getElementById("wpiszwiadomosci");
     inputField.addEventListener("keypress", function(event) {
       if (event.key === "Enter") {
-        sendMessage();
+        wiadomoscii();
       }
     });
   </script>
-
 </body>
 </html>
